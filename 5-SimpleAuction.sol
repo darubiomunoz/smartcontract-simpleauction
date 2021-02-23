@@ -76,7 +76,13 @@ contract SimpleAuction {
 
     /// End the auction and send the highest bid to the beneficiary. 
     function auctionEnd() public {
-        // It is a good guideline to structure functions that interact
+        // It is a good guideline to structure functions that interact with other contracts 
+        // (i.e. they call functions or send Ether) into three phases:
+        // 1. Checking conditions.
+        // 2. Performing actions (potentially changing conditions).
+        // 3. Interacting with other contracts.
+        // If these phases are mixed up, the other contract could call back into the current contract and modify the state or cause effects (ether payout) to be performed multiple times.
+        // If functions called internally include interaction with external contracts, they also have to be considered interaction with external contracts.
 
         // Conditions
         require(block.timestamp >= auctionEndTime, "The auction hasn't ended yet.");
