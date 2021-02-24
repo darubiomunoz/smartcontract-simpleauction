@@ -4,7 +4,8 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract SimpleAuction {
     // Parameters of the auction.
-    // Times are either absolute unix timestamp (seconds since 1970-01-01) or time periods in seconds.
+    // Times are either absolute unix timestamp (seconds since 1970-01-01) or
+    // time periods in seconds.
     address payable public beneficiary;
     uint public auctionEndTime;
 
@@ -26,7 +27,8 @@ contract SimpleAuction {
     // The following is a so-called natspec comment, recognizable by the three slashes.
     // It will be shown when the user is asked to confirm the transaction.
 
-    /// Create a simple auction with "_biddingTime" seconds bidding time on behalf of the beneficiary address "_beneficiary"
+    /// Create a simple auction with "_biddingTime" seconds bidding 
+    /// time on behalf of the beneficiary address "_beneficiary"
     constructor(uint _biddingTime, address payable _beneficiary) {
         beneficiary = _beneficiary;
         auctionEndTime = block.timestamp + _biddingTime;
